@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    // Source - https://stackoverflow.com/q
+    // Posted by gen, modified by community. See post 'Timeline' for change history
+    // Retrieved 2025-11-29, License - CC BY-SA 3.0
+    <head>
+        <meta charset="UTF-8">
+        <title>WebSocket Test</title>
+        <script>
+          window.onload = function() {
+              let connection = new WebSocket("ws://localhost:9876/");
+              connection.onopen = function () {
+                connection.send('Ping');
+            };
 
-</body>
+            connection.onerror = function (error) {
+                console.log('WebSocket Error ' + error);
+            };
+
+            connection.onmessage = function (e) {
+                console.log('Server: ' + e.data);
+            };
+
+          };
+        </script>
+    </head>
+    <body>
+        <h1>What is this?</h1>
+        <p>This is my first test at a WebSocket test.</p>
+        <p>Please open your developer console to see if the connection worked.</p>
+    </body>
 </html>
